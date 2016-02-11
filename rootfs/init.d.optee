@@ -2,12 +2,12 @@
 #
 # /etc/init.d/optee
 #
-# Start/stop OP-TEE services (kernel module and supplicant) 
+# Start/stop OP-TEE services
 #
 case "$1" in
     start)
-	if [ -e /bin/tee-supplicant -a -e /lib/modules/`uname -r`/optee_armtz.ko ]; then
-		echo "Starting OP-TEE..."
+	if [ -e /lib/modules/`uname -r`/optee_armtz.ko ]; then
+		echo "Loading OP-TEE driver..."
 		modprobe optee_armtz
 		count=20
 		while [ ! -e /dev/opteearmtz00 -a $count -ne 0 ]
@@ -16,6 +16,9 @@ case "$1" in
 			count=`expr $count - 1`
 		done
 		[ $count -eq 0 ] && exit 1
+	fi
+	if [ -e /bin/tee-supplicant ]; then
+		echo "Starting OP-TEE..."
 		tee-supplicant&
 		exit 0
 	else
@@ -25,6 +28,8 @@ case "$1" in
         ;;
     stop)
 	killall tee-supplicant
-	modprobe -r optee_armtz optee
+	if [ -e /lib/modules/`uname -r`/optee_armtz.ko ]; then
+		modprobe -r optee_armtz optee
+	fi
 	;;
 esac
