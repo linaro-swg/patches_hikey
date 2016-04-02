@@ -25,6 +25,9 @@ file /lib/${MULTIARCH}/libteec.so.1.0 ${TOP}/optee_client/out/export/lib/libteec
 slink /lib/${MULTIARCH}/libteec.so.1 libteec.so.1.0 755 0 0
 slink /lib/${MULTIARCH}/libteec.so libteec.so.1 755 0 0
 
+# OP-TEE tests
+dir /lib/optee_armtz 755 0 0
+
 # Secure storage
 dir /data 755 0 0
 dir /data/tee 755 0 0
@@ -39,6 +42,3 @@ file /lib/optee_armtz/614789f2-39c0-4ebf-b23592b32ac107ed.ta ${TOP}/sha-perf/out
 
 # strace tool
 file /bin/strace ${TOP}/strace/strace 755 0 0
-
-# OP-TEE tests
-dir /lib/optee_armtz 755 0 0
