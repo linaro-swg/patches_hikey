@@ -12,12 +12,6 @@ file /usbnet.sh ${TOP}/patches_hikey/rootfs/usbnet.sh 755 0 0
 file /etc/init.d/optee ${TOP}/patches_hikey/rootfs/init.d.optee 755 0 0
 slink /etc/rc.d/S09_optee /etc/init.d/optee 755 0 0
 
-# OP-TEE device
-dir /lib/modules 755 0 0
-dir /lib/modules/${KERNEL_VERSION} 755 0 0
-file /lib/modules/${KERNEL_VERSION}/optee.ko ${TOP}/optee_linuxdriver/core/optee.ko 755 0 0
-file /lib/modules/${KERNEL_VERSION}/optee_armtz.ko ${TOP}/optee_linuxdriver/armtz/optee_armtz.ko 755 0 0
-
 # OP-TEE client
 file /bin/tee-supplicant ${TOP}/optee_client/out/export/bin/tee-supplicant 755 0 0
 dir /lib/${MULTIARCH} 755 0 0
