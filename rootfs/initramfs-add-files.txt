@@ -8,9 +8,5 @@ file /etc/udhcp/simple.script ${TOP}/busybox/examples/udhcp/simple.script 755 0 
 # Run this manually after plugging a USB to ethernet adapter
 file /usbnet.sh ${TOP}/patches_hikey/rootfs/usbnet.sh 755 0 0
 
-# rc.d entry for OP-TEE (start on boot)
-file /etc/init.d/optee ${TOP}/patches_hikey/rootfs/init.d.optee 755 0 0
-slink /etc/rc.d/S09_optee /etc/init.d/optee 755 0 0
-
 # strace tool
 file /bin/strace ${TOP}/strace/strace 755 0 0
