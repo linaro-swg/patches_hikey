@@ -1,3 +1,2 @@
-search.fs_label boot root
-set prefix=($root)'/EFI/BOOT'
+set prefix='/EFI/BOOT'
 configfile $prefix/grub.cfg
